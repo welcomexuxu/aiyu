@@ -1,0 +1,147 @@
+<!doctype html>
+<html style='font-size:100px;'>
+<head>
+<meta charset="utf-8">
+<title>移动端页面</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1.0" />
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="gun">
+		<div class="gun1">
+			<img src="images/s0.jpg" alt="" id="a1">
+			<img src="images/s1.jpg" alt="" id="a2">
+			<img src="images/s2.jpg" alt="" id="a3">
+		</div>
+	</div>
+	<ul class="dian">
+		<li class="dy"></li>
+		<li></li>
+		<li></li>
+	</ul>
+	
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<!-- <script type="text/javascript" src="js/ort.js"></script> 自适应(改变整体的比例) --> 
+<script>
+	// function Zoom(){//自适应(改变整体的比例)
+		// 	var device=document.documentElement.clientWidth;
+		// 	var Zoom=device/640;
+		// 	document.body.style.zoom=Zoom;
+	//}
+	// Zoom();
+	// window.onresize=function(){
+	// 		Zoom();
+	// }
+	function autosize(){//自适应（rem）
+		var ww=document.documentElement.clientWidth;
+		var scale=ww/640;
+		var HTML=document.getElementsByTagName('html')[0];
+		HTML.style.fontSize=100*scale+'px';
+	}
+	autosize();
+	window.onresize=function(){
+		autosize();
+	}
+
+	//触摸滑动
+	var startY=0,endY=0,startX=0,endX=0,n=1;
+	document.addEventListener('touchstart',function (e){
+		startY=e.touches[0].pageY;
+		startX=e.touches[0].pageX;
+	},false);
+	document.addEventListener('touchmove',function (e){
+		endY=e.touches[0].pageY;
+		endX=e.touches[0].pageX;
+		// console.log(endX);
+	},false);
+	var b=0;
+	document.addEventListener('touchend',function (e){
+		if(startX-endX>20){
+			// console.log(startX-endX);
+			b++;
+			
+			// console.log($('img').length);
+			var wimg=$('img').eq(0).width()*b;
+			if(b>=$('img').length){
+				// b=0;
+				$('.gun').scrollLeft=wimg*2;
+			}else{
+				// console.log(wimg);
+				$('.gun').stop().animate({
+					scrollLeft:wimg,
+				})
+				console.log(b);
+				$('li').eq(b).addClass('dy').siblings().removeClass('dy');
+			}
+			if($('.gun').scrollLeft()==$('img').width()*($('img').length-1)){
+				window.open('wap1.html','_self');
+			}
+		}
+
+		// if(startX-endX<-100){
+		// 	// console.log(startX-endX);
+		// 	b--;
+		// 	console.log($('img').length);
+		// 	var wimg=$('img').eq(0).width()*b;
+		// 	if(b<=0){
+		// 		b=3;
+		// 		$('.gun').scrollLeft=wimg*0;
+		// 	}else{
+		// 		console.log(wimg);
+		// 		$('.gun').animate({
+		// 			scrollLeft:wimg,
+		// 		})
+		// 	}
+		// }
+	},false)
+	
+	// document.addEventListener('touchend',function (e){
+	// 	// console.log(startX-endX)
+	// 	if (startX-endX>100) {;
+	// 	if (n>=3) {
+	//     		return;
+	//     	};
+	//         switch (n) {
+	//             case 1:
+	//                 $("#a"+n).hide(600);
+	//                 $("#a"+(n+1)).show();
+	//                 break;
+	//             case 2:
+	//                 $("#a" + n).hide(600);
+	//                 $("#a" + (n + 1)).show();
+	//                 break;
+	//         }
+	//         n++;
+	//     }
+
+	//     if (startX-endX<-100) {
+	    	
+	//     	if (n<=1) {
+	//     		return;
+	//     	};
+	    	
+	//         switch (n) {
+	//             case 2:
+	//                 $("#a1").show(600,function (){
+	//                     $("#a2").hide();
+	//                 });
+	//                 break;
+	//             case 3:
+	//                 $("#a2").show(600,function (){
+	//                     $("#a3").hide();
+	//                 });
+	//                 break;
+	//         }
+	//         n--;
+	//     }
+	// },false);
+
+
+
+	
+</script>
+</html>

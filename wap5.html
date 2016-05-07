@@ -1,0 +1,58 @@
+<!doctype html>
+<html style='font-size:100px;'>
+<head>
+<meta charset="utf-8">
+<title>移动端页面</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1.0" />
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="pd">
+		<div class="dl1 pdb">
+			<div class="dl2"></div>
+			<h1>获取</h1>
+		</div>
+		<div class="pd543">
+			<ul class="hqul">
+				<li class="li">
+					<span>201585</span>
+				</li>
+				<li class="li1">
+					<span>长按复制有效码</span>
+				</li>
+			</ul>
+			<h3>说明文字介绍如何配对？</h3>
+			<p class="hqh3">获取或发送验证码验证成功后可与对方配对， 查看对方信息，和对方聊天等等获取或发送 验证码验证成功后可与对方配对，查看对方信息，和对方聊天等等</p>
+		</div>
+	</div>
+	
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script>
+	function autosize(){//自适应（rem）
+		var ww=document.documentElement.clientWidth;
+		var scale=ww/640;
+		var HTML=document.getElementsByTagName('html')[0];
+		HTML.style.fontSize=100*scale+'px';
+	}
+	autosize();
+	window.onresise=function(){
+		autosize();
+	}
+	//返回上一页
+	$('.dl2').click(function(){
+		window.history.go(-1);
+	})
+	//随机产生有效码
+	var sjs=Math.floor(Math.random()*900001+1000);
+	$('.li span').html(sjs);
+	//复制有效码
+	$('.li1 span').click(function(){
+		var a=sjs;
+		// alert(a);
+	})
+</script>
+</html>

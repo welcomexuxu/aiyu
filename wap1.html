@@ -1,0 +1,146 @@
+<!doctype html>
+<html style='font-size:100px;'>
+<head>
+<meta charset="utf-8">
+<title>移动端页面</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1.0" />
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="dl">
+		<div class="dl1">
+			<div class="dl2"></div>
+			<h1>登录</h1>
+		</div>
+		<!-- <div class="dlaa"> -->
+			<!-- <a href="##" class="dla"></a> -->
+			<img src="images/dlaiyu_03.png" alt="" class="dlimg">
+		<!-- </div> -->
+		<div id="dl">
+			<div class="dl3"></div>
+			<div class="dlb">
+				<div class="dl4">
+					<p class="dl5"></p>
+					<span class='gang'></span>
+					<input type="text" class="inp">
+					<span class='dld yh'>用户名</span>
+				</div>
+				<div class="dl4 dl6">
+					<p class="dl7"></p>
+					<span class='gang1'></span>
+					<input type="password" class="ipt1 bai">
+					<span class='dld dld1 yh1'>......</span>
+				</div>
+			</div>
+			<div class="dl8"></div>
+			<div class="dlb1" id="login">Login in</div>
+			<ul class="dl9">
+				<li class="li" id="wjmm">忘记密码</li>
+				<li class="li1">注册账号</li>
+			</ul>
+			<div class="dl10"></div>
+			<div class="dl11">社交账号一键登录</div>
+		</div>
+		
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script>
+	//自适应（rem）
+	function autosize(){
+		var ww=document.documentElement.clientWidth;
+		var scale=ww/640;
+		var HTML=document.getElementsByTagName('html')[0];
+		HTML.style.fontSize=100*scale+'px';
+	}
+	autosize();
+	window.onresize=function(){
+		autosize();
+	}
+	//注册账号跳转
+	$('.li1').click(function(){
+		window.open('wap2.html','_self');
+	})
+	//返回上一页
+	$('.dl2').click(function(){
+		window.history.go(-1);
+	})
+	//忘记密码跳转
+	$('#wjmm').click(function(){
+		window.open('wap3.html','_self');
+	})
+	$('.dl11').click(function(){
+		window.open('wap6.html','_self');
+	});
+	// 焦点事件函数
+	function foc(cobj,inpt){
+		$(cobj).click(function(){
+			$(cobj).css('display','none');
+			$(inpt).focus();
+		})
+		$(inpt).blur(function(){
+			if($(inpt).val()==''){
+				$(cobj).css('display','block');
+			}
+		})
+	}
+	foc('.yh','.inp');
+	foc('.yh1','.ipt1');
+	//login in跳转
+	// $('#login').click(function(){
+	// 	window.open('wap6.html','_self');
+	// })
+	//ajax实现login in登录跳转
+	var login=document.getElementById('login');
+	login.onclick=function (){
+		ajax('js/login.php?act=login&user='+$('.inp').val()+'&pass='+$('.ipt1').val()+'&t='+new Date().getTime(),function (str){
+			var json=JSON.parse(str);//必须是严格的json格式'{"name":"abc","age":"18"}'
+			if (json.err) {
+				if(json.msg=='登陆成功'){
+					window.open('wap6.html','_self');
+				}else{
+					$('.inp').val('');
+					$('.ipt1').val('');
+					$('.yh').css('display','block');
+					$('.yh1').css('display','block');
+					alert(json.msg);
+
+				}
+			}
+		},function (){
+			alert('连接失败');
+		});
+	}
+	//ajax函数
+	function ajax(Url,fun1,fun2){
+	// 1.创建XMLHttpRequest对象
+	if(window.XMLHttpRequest){//非IE56
+		var xhr=new XMLHttpRequest();
+	}else{//IE56
+		var xhr=new ActiveXObject("Microsoft.XMLHTTP");
+	};
+	// 2.与服务器建立连接
+	xhr.open('get',Url,true);
+	// 3.发送给服务器
+	xhr.send(null);//get请求参数为空或null
+	// 4.接收数据
+	xhr.onreadystatechange=function (){
+		if (xhr.readyState==4) {//请求完成
+			if (xhr.status==200) {//ok
+				fun1(xhr.responseText);
+			} else{
+				if (fun2) {
+					fun2();
+				} else{
+					alert(xhr.status);
+				};
+			};
+		};
+	}
+}
+	
+</script>
+</html>

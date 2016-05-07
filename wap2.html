@@ -1,0 +1,152 @@
+<!doctype html>
+<html style='font-size:100px;'>
+<head>
+<meta charset="utf-8">
+<title>移动端页面</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1.0" />
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="dl">
+		<div class="dl1">
+			<div class="dl2"></div>
+			<h1>注册</h1>
+		</div>
+		<div id="dl" class="zck">
+			<div class="zc3"></div>
+			<div class="dlb dlbb">
+				<p class="zc5"></p>
+				<span class='zgang'></span>
+				<input type="text" class="inp in">
+				<span class='dld1 yh'>用户名</span>
+			</div>
+			<div class="zc3"></div>
+			<div class="dlb dlbb1">
+				<p class="zc6"></p>
+				<span class='zgang'></span>
+				<input type="text" class="inp in1">
+				<span class='dld1 yh1'>密码</span>
+			</div>
+			<div class="zc3"></div>
+			<div class="dlb dlbb2">
+				<p class="zc6"></p>
+				<span class='zgang'></span>
+				<input type="text" class="inp in2">
+				<span class='dld1 yh2'>确认密码</span>
+			</div>
+			<div class="dl8 zc8"></div>
+			<div class="zc2" id="zc">注册</div>
+			<ul class="dl9 zc9">
+				<li class="li" id="yy">已有账号登录</li>
+			</ul>
+			<div class="dl10 zc10"></div>
+			<div class="zc11">社交账号一键登录</div>
+		</div>
+		
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script>
+	function autosize(){//自适应（rem）
+		var ww=document.documentElement.clientWidth;
+		var scale=ww/640;
+		var HTML=document.getElementsByTagName('html')[0];
+		HTML.style.fontSize=100*scale+'px';
+	}
+	autosize();
+	window.onresize=function(){
+		autosize();
+	}
+	//返回上一页
+	$('.dl2').click(function(){
+		window.history.go(-1);
+	})
+	//已有账号登录跳转
+	$('#yy').click(function(){
+		window.open('wap1.html','_self');
+	})
+	// 焦点事件函数
+	function foc(cobj,inpt){
+		$(cobj).click(function(){
+			$(cobj).css('display','none');
+			$(inpt).focus();
+			$(inpt).val('');
+		})
+		$(inpt).blur(function(){
+			if($(inpt).val()==''){
+				$(cobj).css('display','block');
+			}
+		})
+	}
+	foc('.yh','.in');
+	foc('.yh1','.in1');
+	foc('.yh2','.in2');
+	//注册跳转
+	// $('.zc2').click(function(){
+	// 	window.open('wap1.html','_self');
+	// })
+	//判断两次输入的密码是同一个
+	$('.in2').blur(function(){
+		if($('.in1').val()!=$('.in2').val()){
+			$('.in2').val('两次输入的密码不一样');
+			$('.yh2').css('display','none');
+		}
+		
+	})
+	$('.in2').focus(function(){
+		if($('.in2').val()=='两次输入的密码不一样'){
+			$('.in2').val('');
+
+		}
+	})
+	//注册ajax实现注册（注册完成跳转到登录页面，不成功急需留在本页面并且提示用户）
+	var zc=document.getElementById('zc');
+	zc.onclick=function (){
+		ajax('js/login.php?act=add&user='+$('.in').val()+'&pass='+$('.in1').val()+'&t='+new Date().getTime(),function (str){
+			// var json=JSON.parse(str);//必须是严格的json格式'{"name":"abc","age":"18"}'
+			var json=eval('('+str+')')
+			if (json.err) {
+				if(json.msg=='注册成功'){
+					window.open('wap1.html','_self');
+				}else{
+					alert(json.msg);
+				}
+			};
+		},function (){
+			alert('连接失败');
+		});
+	}
+	//ajax函数
+	function ajax(Url,fun1,fun2){
+	// 1.创建XMLHttpRequest对象
+	if(window.XMLHttpRequest){//非IE56
+		var xhr=new XMLHttpRequest();
+	}else{//IE56
+		var xhr=new ActiveXObject("Microsoft.XMLHTTP");
+	};
+	// 2.与服务器建立连接
+	xhr.open('get',Url,true);
+	// 3.发送给服务器
+	xhr.send(null);//get请求参数为空或null
+	// 4.接收数据
+	xhr.onreadystatechange=function (){
+		if (xhr.readyState==4) {//请求完成
+			if (xhr.status==200) {//ok
+				fun1(xhr.responseText);
+			} else{
+				if (fun2) {
+					fun2();
+				} else{
+					alert(xhr.status);
+				};
+			};
+		};
+	}
+}
+
+	
+</script>
+</html>

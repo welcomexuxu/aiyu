@@ -1,0 +1,90 @@
+<!doctype html>
+<html style='font-size:100px;'>
+<head>
+<meta charset="utf-8">
+<title>移动端页面</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1.0" />
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="pd ssqb">
+		<div class="dl1 pdb szp">
+			<div class="dl2"></div>
+			<h1>爱语</h1>
+			<div class="ay ssq"></div>
+		</div>
+		<ul class="ssq1">
+			<li><img src="images/ssq1_03.png" alt="" class="ssqimg"></li>
+			<li class="ssqli">
+				<h3>爱上电影</h3>
+				<p>当你还在纠结要不要做设计，当你还在苦恼为什么自己 怀才不遇，当你还不曾思考我该做什么.......</p>
+				<div class="ssqdiv">
+					<img src="images/ssq_03.jpg" alt="">
+					<img src="images/ssq_03.jpg" alt="">
+				</div>
+				<ul class="ssqul">
+					<li>5小时前</li>
+					<li class="ssqli2"><img src="images/ssqs_03.png" alt="">105</li>
+					<li class="ssqli1"><img src="images/ssqw_03.png" alt="">105</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="ssq1">
+			<li><img src="images/ssq1_03.png" alt="" class="ssqimg"></li>
+			<li class="ssqli">
+				<h3>爱上电影</h3>
+				<p>当你还在纠结要不要做设计，当你还在苦恼为什么自己 怀才不遇，当你还不曾思考我该做什么.......</p>
+				<div class="ssqdiv ssqdiv1">
+					<img src="images/ssq1_03.jpg" alt="">
+					<!-- <img src="images/ssq_03.jpg" alt=""> -->
+				</div>
+				<ul class="ssqul">
+					<li>5小时前</li>
+					<li class="ssqli2"><img src="images/ssqs_03.png" alt="">105</li>
+					<li class="ssqli1"><img src="images/ssqw_03.png" alt="">105</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="ssq1">
+			<li><img src="images/ssq1_03.png" alt="" class="ssqimg"></li>
+			<li class="ssqli">
+				<h3>爱上电影</h3>
+				<p>当你还在纠结要不要做设计，当你还在苦恼为什么自己 怀才不遇，当你还不曾思考我该做什么.......</p>
+				<div class="ssqdiv">
+					<img src="images/ssq_03.jpg" alt="">
+					<img src="images/ssq_03.jpg" alt="">
+				</div>
+				<ul class="ssqul">
+					<li>5小时前</li>
+					<li class="ssqli2"><img src="images/ssqs_03.png" alt="">105</li>
+					<li class="ssqli1"><img src="images/ssqw_03.png" alt="">105</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script>
+	function autosize(){//自适应（rem）
+		var ww=document.documentElement.clientWidth;
+		var scale=ww/640;
+		var HTML=document.getElementsByTagName('html')[0];
+		HTML.style.fontSize=100*scale+'px';
+	}
+	autosize();
+	window.onresize=function(){
+		autosize();
+	}
+	//返回上一页
+	$('.dl2').click(function(){
+		window.history.go(-1);
+	})
+	$('.ay').click(function(){
+		window.open('wap9.html','_self');
+	})
+	
+</script>
+</html>

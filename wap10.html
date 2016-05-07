@@ -1,0 +1,98 @@
+<!doctype html>
+<html style='font-size:100px;'>
+<head>
+<meta charset="utf-8">
+<title>移动端页面</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1.0" />
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="pd">
+		<div class="dl1 pdb fs3">
+			<div class="dl2"></div>
+			<h1>聊天室</h1>
+		</div>
+		<div class="zjz">
+			<ul class="zjz1">
+				<li class="zj">
+					<img src="images/zy2_03.png" alt="">
+					<ul class="zj1">
+						<li class="zj2"></li>
+						<li class="zj3">撒打开了诞节疯狂拉房间了深刻的减肥</li>
+					</ul>
+				</li>
+				<li class="zj zjz2">
+					<img src="images/zy2_03.png" alt="">
+					<ul class="zj1">
+						<li class="zj2"></li>
+						<li class="zj3">撒打开了诞节疯狂拉房间了节疯狂拉房间了节疯狂拉房间了深刻的减肥</li>
+					</ul>
+				</li>
+				<li class="zj zjz2 zji">
+					<img src="images/zy2_03.png" alt="">
+					<ul class="zj1">
+						<li class="zj3">撒打开了诞节疯狂拉房间了节疯狂拉房间了节疯狂拉房间了深刻的减肥</li>
+						<li class="zj22"></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="ltdi">
+			<img src="images/ll_02.png" alt="" class='img1'>
+			<input type="text" class="ltinp">
+			<span class='ltsp'>快来吐槽，小伙伴们行动起来</span>
+			<img src="images/l_03.png" alt="" class="ltd">
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script>
+	function autosize(){//自适应（rem）
+		var ww=document.documentElement.clientWidth;
+		var scale=ww/640;
+		var HTML=document.getElementsByTagName('html')[0];
+		HTML.style.fontSize=100*scale+'px';
+	}
+	autosize();
+	window.onresize=function(){
+		autosize();
+	}
+
+	// 焦点事件函数
+	
+	$('.ltsp').click(function(){
+		$('.ltsp').css('display','none');
+		$('.ltd').css('display','none');
+		$('.ltinp').focus();
+	})
+	$('.ltinp').blur(function(){
+		if($('.ltinp').val()==''){
+			$('.ltsp').css('display','block');
+			$('.ltd').css('display','block');
+		}
+	})
+	//点击发送跳转
+	$('.fs').click(function(){
+		window.open('wap8.html','_self');
+	})
+	//返回上一页
+	$('.dl2').click(function(){
+		window.history.go(-1);
+	})
+	
+	$('.ltinp').keyup(function (e){
+		if(e.keyCode==13){
+			var li=$('<li></li>');
+			li.addClass('zj zjz2 zji');
+			li.html('<img src="images/zy2_03.png" alt=""><ul class="zj1"><li class="zj3">'+$('.ltinp').val()+'</li><li class="zj22"></li></ul>');
+			$('.zjz1').append(li);
+			$('.ltinp').val('');
+		}
+	})
+	
+	
+</script>
+</html>

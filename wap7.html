@@ -1,0 +1,70 @@
+<!doctype html>
+<html style='font-size:100px;'>
+<head>
+<meta charset="utf-8">
+<title>移动端页面</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1.0" />
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="pd">
+		<div class="dl1 pdb szp">
+			<div class="dl2"></div>
+			<h1>设置</h1>
+		</div>
+		<div class="sz">
+			<img src="images/sz_03.png" alt="">
+		</div>
+		<div class="sz1">
+			<p class="sz2"></p>
+			<ul class="sz3">
+				<li class="li">姓名</li>
+				<li class="li1"></li>
+			</ul>
+		</div>
+		<div class="sz1">
+			<p class="sz4"></p>
+			<ul class="sz3">
+				<li class="li">性别</li>
+				<li class="li1"></li>
+			</ul>
+		</div>
+		<div class="sz1">
+			<p class="sz5"></p>
+			<ul class="sz3">
+				<li class="li">手机号码</li>
+				<li class="li1"></li>
+			</ul>
+		</div>
+		<div class="sz6">
+			<div class="sz7"></div>
+			<p>保存</p>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script>
+	function autosize(){//自适应（rem）
+		var ww=document.documentElement.clientWidth;
+		var scale=ww/640;
+		var HTML=document.getElementsByTagName('html')[0];
+		HTML.style.fontSize=100*scale+'px';
+	}
+	autosize();
+	window.onresize=function(){
+		autosize();
+	}
+	//返回上一页
+	$('.dl2').click(function(){
+		window.history.go(-1);
+	})
+	
+
+
+
+	
+</script>
+</html>

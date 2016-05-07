@@ -1,0 +1,50 @@
+<!doctype html>
+<html style='font-size:100px;'>
+<head>
+<meta charset="utf-8">
+<title>移动端页面</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1.0" />
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="pd">
+		<div class="dl1 pdb">
+			<div class="dl2"></div>
+			<h1>配对</h1>
+		</div>
+		<div class="pd543">
+			<ul class="pdul">
+				<li class="li"><img src="images/pdz_03.png" alt=""></li>
+				<li><img src="images/pdz1_03.png" alt="" class="hq"></li>
+			</ul>
+			<h3>说明文字介绍如何配对？</h3>
+			<p>获取或发送验证码验证成功后可与对方配对， 查看对方信息，和对方聊天等等获取或发送 验证码验证成功后可与对方配对，查看对方 信息</p>
+		</div>
+	</div>
+	
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script>
+	function autosize(){//自适应（rem）
+		var ww=document.documentElement.clientWidth;
+		var scale=ww/640;
+		var HTML=document.getElementsByTagName('html')[0];
+		HTML.style.fontSize=100*scale+'px';
+	}
+	autosize();
+	window.onresise=function(){
+		autosize();
+	}
+	//获取跳转
+	$('.hq').click(function(){
+		window.open('wap5.html','_self');
+	})
+	//返回上一页
+	$('.dl2').click(function(){
+		window.history.go(-1);
+	})
+</script>
+</html>
