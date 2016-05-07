@@ -1,0 +1,66 @@
+<!doctype html>
+<html style='font-size:100px;'>
+<head>
+<meta charset="utf-8">
+<title>移动端页面</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1.0" />
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="pd">
+		<div class="dl1 pdb fs3">
+			<div class="dl2"></div>
+			<h1>爱语</h1>
+			<div class="ay fs">发送</div>
+		</div>
+		<textarea class="zy1 fs2"></textarea>
+		<p class="fs1">写下你此刻的想法......</p>
+		<div class="fs586">
+			<img src="images/fxx1_03.png" alt="">
+			<img src="images/fxx2_03.png" alt="">
+			<img src="images/fxx1_03.png" alt="">
+			<img src="images/fxx2_03.png" alt="" class="fsi">
+		</div>
+		<div class="fs586">
+			<img src="images/fxx3_03.png" alt="">
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script>
+	function autosize(){//自适应（rem）
+		var ww=document.documentElement.clientWidth;
+		var scale=ww/640;
+		var HTML=document.getElementsByTagName('html')[0];
+		HTML.style.fontSize=100*scale+'px';
+	}
+	autosize();
+	window.onresize=function(){
+		autosize();
+	}
+
+	// 焦点事件函数
+	
+	$('.fs1').click(function(){
+		$('.fs1').css('display','none');
+		$('textarea').focus();
+	})
+	$('textarea').blur(function(){
+		if($('textarea').val()==''){
+			$('.fs1').css('display','block');
+		}
+	})
+	//点击发送跳转
+	$('.fs').click(function(){
+		window.open('wap8.html','_self');
+	})
+	//返回上一页
+	$('.dl2').click(function(){
+		window.history.go(-1);
+	})
+	
+</script>
+</html>
