@@ -1,0 +1,124 @@
+<!doctype html>
+<html style='font-size:100px;'>
+<head>
+<meta charset="utf-8">
+<title>移动端页面</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1.0" />
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="right">
+		<div class="zu">
+			<div class="left">
+				<ul class="c">
+					<li><img src="images/c_03.png" alt=""></li>
+					<li>iViperious</li>
+				</ul>
+				<ul class="c1">
+					<li class="c2"><img src="images/cxj_03.png" alt=""><span>主页</span></li>
+					<li class="c2 cc1"><img src="images/ci_03.png" alt=""><span>说说墙</span></li>
+					<li class="c2"><img src="images/cc_03.png" alt=""><span>聊天室</span></li>
+					<li class="c2 cc"><img src="images/cx_03.png" alt=""><span>设置</span></li>
+					<li class="c2 c3"><img src="images/cj_03.png" alt=""><span>退出</span></li>
+				</ul>
+			</div>
+			<div class="pd">
+				<div class="dl1 pdb">
+					<div class="dl2 zy" id="dao"></div>
+					<h1>爱语</h1>
+					<div class="ay"></div>
+				</div>
+				<div class="zy1">
+					<ul class="zyul">
+						<li class="zyli">
+							<img src="images/zy_03.png" alt="">
+							<span>张娜</span>
+						</li>
+						<li><div class="zyli1"><img src="images/xin-xing.png" alt="" class="zyimg"></div></li>
+						<li class="zyli">
+							<img src="images/zy2_03.png" alt="">
+							<span>李楠</span>
+						</li>
+					</ul>
+				</div>
+				<div class="zy3">
+					<img src="images/zyxy_03.png" alt="" class="imgs">
+				</div>
+				<div class="zyj"><img src="images/zyj_03.png" alt=""></div>
+				<div class="zy2">
+					<p>暗恋他暗恋他暗恋他暗恋他暗恋他  </p>
+					<p>暗恋他暗恋他暗恋他</p>
+					<p>暗恋他暗恋他</p>
+				</div>
+				<div class="zy4">
+					<p>相恋日期2015-10-16</p>
+				</div>
+				<div class="zy5">
+					<div class="zy6"></div>
+					<p>解除关系</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script>
+	function autosize(){//自适应（rem）
+		var ww=document.documentElement.clientWidth;
+		var scale=ww/640;
+		var HTML=document.getElementsByTagName('html')[0];
+		HTML.style.fontSize=100*scale+'px';
+	}
+	autosize();
+	window.onresize=function(){
+		autosize();
+	}
+	//侧栏中点击哪个给哪个加背景
+	$('.c2').click(function (){
+		// var tar=e.target;
+		var tar=$('.c2').index(this);
+		$('.c2').eq(tar).css({
+			background: 'url(images/bai.png) 0 0 no-repeat',
+			backgroundSize:'100% 100%',
+		}).siblings().css({
+			background:'none',
+		})
+	})
+	//点击调到设置页面
+	$('.cc').click(function(){
+		window.open('wap7.html','_self');
+	})
+	$('.cc1').click(function(){
+		window.open('wap8.html','_self');
+	})
+	//左侧出来
+	var re=$('.left').width();
+	$('.right').scrollLeft(re);
+	// alert($('.right').scrollLeft())
+	// var fl=1;
+	$('#dao').click(function(){
+		var re=$('.left').width();
+		// if(fl==1){
+			$('.right').animate({
+				scrollLeft:0,
+			})// ,function(){return fl=0;})
+		// }
+		// if(fl==0){
+		// 	$('.right').animate({
+		// 		scrollLeft:re,
+		// 	},function(){return fl=1;})
+		// }
+	})
+	$('.c3').click(function(){
+		$('.right').animate({
+			scrollLeft:re,
+		})
+	})
+	
+
+	
+</script>
+</html>
